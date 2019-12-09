@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".viewgroup.myLinearLayout.MyLinearLayoutTest"></activity>
+        <activity android:name=".view.magnifyingView.MagnifyingTest"></activity>
+        <activity android:name=".view.gradientView.GradientTest" />
+        <activity android:name=".view.headView.HeadViewTest" />
+        <activity android:name=".view.telescopeView.TeleScopeViewTest" />
+        <activity android:name=".view.clearEditView.ClearEditTest" />
+        <activity android:name=".view.shadowLayer.ShadowTest" />
+        <activity android:name=".viewgroup.myLinearLayout.MyLinearLayoutTest" />
         <activity android:name=".view.waveview.WaveTest" />
         <activity android:name=".view.CanvasView.CanvasTest" />
         <activity android:name=".MainActivity">
