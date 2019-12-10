@@ -13,6 +13,7 @@ import com.example.diyviewstudy.view.magnifyingView.MagnifyingTest;
 import com.example.diyviewstudy.view.shadowLayer.ShadowTest;
 import com.example.diyviewstudy.view.telescopeView.TeleScopeViewTest;
 import com.example.diyviewstudy.view.waveview.WaveTest;
+import com.example.diyviewstudy.viewgroup.flowLayout.FlowlayoutTest;
 import com.example.diyviewstudy.viewgroup.myLinearLayout.MyLinearLayoutTest;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn9:
                 go(MagnifyingTest.class);
+                break;
+            case R.id.btn10:
+                go(FlowlayoutTest.class);
                 break;
         }
     }
