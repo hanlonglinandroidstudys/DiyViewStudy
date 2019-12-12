@@ -1,4 +1,4 @@
-package com.example.diyviewstudy.view.CanvasView;
+package com.example.diyviewstudy.view.canvasView;
 
 
 import android.content.Context;

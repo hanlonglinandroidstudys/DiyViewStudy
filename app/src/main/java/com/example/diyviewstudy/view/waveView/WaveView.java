@@ -1,4 +1,4 @@
-package com.example.diyviewstudy.view.waveview;
+package com.example.diyviewstudy.view.waveView;
 
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
@@ -14,12 +14,11 @@ import android.view.animation.LinearInterpolator;
 import androidx.annotation.Nullable;
 
 /**
- * 水波纹效果 圆形
+ * 水波纹效果
  */
-public class WaveView2 extends View {
+public class WaveView extends View {
     Paint mPaint;
     Path mPath;
-    Path circlePath;
 
     // 半个波长
     int halfWaveWidth = 150;
@@ -32,12 +31,12 @@ public class WaveView2 extends View {
     // 剩余电量 1~100
     float progress=0;
 
-    public WaveView2(Context context) {
+    public WaveView(Context context) {
         super(context);
         init();
     }
 
-    public WaveView2(Context context, @Nullable AttributeSet attrs) {
+    public WaveView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
     }
@@ -45,7 +44,6 @@ public class WaveView2 extends View {
     private void init() {
         mPaint = new Paint();
         mPath = new Path();
-        circlePath=new Path();
     }
 
     private void initWaveStyle(){
@@ -71,19 +69,12 @@ public class WaveView2 extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        // 裁剪画布 圆形
-        canvas.save();
-        float r=Math.min(getWidth(),getHeight())/2;
-        circlePath.addCircle(getWidth()/2,getHeight()/2,r, Path.Direction.CCW);
-        canvas.clipPath(circlePath);
         canvas.drawColor(Color.GREEN);
-        // 画波形
+        // 画波浪
         drawWave(canvas);
         // 画文字
         drawText(canvas);
 
-        // 还原画布
-        canvas.restore();
     }
 
     private void drawWave(Canvas canvas) {
@@ -151,7 +142,7 @@ public class WaveView2 extends View {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 progress=(float)animation.getAnimatedValue();
-                startY = (float) WaveView2.this.getHeight() * (100 - progress) / 100;
+                startY = (float)WaveView.this.getHeight() * (100 - progress) / 100;
                 postInvalidate();
             }
         });

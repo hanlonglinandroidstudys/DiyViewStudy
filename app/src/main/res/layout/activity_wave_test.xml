@@ -5,37 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.waveview.WaveTest">
+    tools:context=".view.waveView.WaveTest">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="3.波浪" />
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <EditText
-            android:id="@+id/ed_progress"
-            android:layout_width="wrap_content"
-            android:minWidth="100dp"
-            android:layout_height="40dp"
-            android:hint="输入进度 0~100"
-            android:maxLength="2"
-            android:inputType="number"/>
-        <Button
-            android:id="@+id/btn_change"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="改变电量"/>
-    </LinearLayout>
-    <com.example.diyviewstudy.view.waveview.WaveView
-        android:id="@+id/waveView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
-    <com.example.diyviewstudy.view.waveview.WaveView2
-        android:id="@+id/waveView2"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3.波浪" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/ed_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:hint="输入进度 0~100"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:minWidth="100dp" />
+
+                <Button
+                    android:id="@+id/btn_change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="改变电量" />
+            </LinearLayout>
+
+            <com.example.diyviewstudy.view.waveView.WaveMoveShipView
+                android:id="@+id/waveView3"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="5dp"/>
+
+            <com.example.diyviewstudy.view.waveView.WaveView
+                android:id="@+id/waveView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <com.example.diyviewstudy.view.waveView.WaveView2
+                android:id="@+id/waveView2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

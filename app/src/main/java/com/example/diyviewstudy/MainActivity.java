@@ -4,15 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.diyviewstudy.view.CanvasView.CanvasTest;
+import com.example.diyviewstudy.view.canvasView.CanvasTest;
 import com.example.diyviewstudy.view.clearEditView.ClearEditTest;
-import com.example.diyviewstudy.view.clearEditView.ClearableEditText;
 import com.example.diyviewstudy.view.gradientView.GradientTest;
 import com.example.diyviewstudy.view.headView.HeadViewTest;
 import com.example.diyviewstudy.view.magnifyingView.MagnifyingTest;
+import com.example.diyviewstudy.view.searchView.SearchViewTest;
 import com.example.diyviewstudy.view.shadowLayer.ShadowTest;
 import com.example.diyviewstudy.view.telescopeView.TeleScopeViewTest;
-import com.example.diyviewstudy.view.waveview.WaveTest;
+import com.example.diyviewstudy.view.waveView.WaveTest;
 import com.example.diyviewstudy.viewgroup.flowLayout.FlowlayoutTest;
 import com.example.diyviewstudy.viewgroup.myLinearLayout.MyLinearLayoutTest;
 
@@ -57,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn10:
                 go(FlowlayoutTest.class);
+                break;
+            case R.id.btn11:
+                go(SearchViewTest.class);
                 break;
         }
     }
