@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.searchView.SearchViewTest"></activity>
+        <activity android:name=".view.gestureView.GestureViewTest"></activity>
+        <activity
+            android:name=".view.screenMoveView.ScreenMoveTest"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".view.refreshView.PullToRefreshTest" />
+        <activity android:name=".view.searchView.SearchViewTest" />
         <activity android:name=".viewgroup.flowLayout.FlowlayoutTest" />
         <activity android:name=".view.magnifyingView.MagnifyingTest" />
         <activity android:name=".view.gradientView.GradientTest" />

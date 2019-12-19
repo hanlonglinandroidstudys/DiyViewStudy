@@ -6,9 +6,12 @@ import android.view.View;
 
 import com.example.diyviewstudy.view.canvasView.CanvasTest;
 import com.example.diyviewstudy.view.clearEditView.ClearEditTest;
+import com.example.diyviewstudy.view.gestureView.GestureViewTest;
 import com.example.diyviewstudy.view.gradientView.GradientTest;
 import com.example.diyviewstudy.view.headView.HeadViewTest;
 import com.example.diyviewstudy.view.magnifyingView.MagnifyingTest;
+import com.example.diyviewstudy.view.refreshView.PullToRefreshTest;
+import com.example.diyviewstudy.view.screenMoveView.ScreenMoveTest;
 import com.example.diyviewstudy.view.searchView.SearchViewTest;
 import com.example.diyviewstudy.view.shadowLayer.ShadowTest;
 import com.example.diyviewstudy.view.telescopeView.TeleScopeViewTest;
@@ -60,6 +63,15 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn11:
                 go(SearchViewTest.class);
+                break;
+            case R.id.btn12:
+                go(PullToRefreshTest.class);
+                break;
+            case R.id.btn13:
+                go(ScreenMoveTest.class);
+                break;
+            case R.id.btn14:
+                go(GestureViewTest.class);
                 break;
         }
     }

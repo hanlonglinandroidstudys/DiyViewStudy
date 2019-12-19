@@ -77,7 +77,10 @@ public class SearchView extends View {
     Path mPath = null;
     PathMeasure measure = new PathMeasure();
     Path dstPath = new Path();
-    String loadingText="搜索中......";
+    String loadingText="搜索中...";
+    private ValueAnimator startAnimator;
+    private ValueAnimator loadAnimator;
+    private ValueAnimator endAnimator;
 
 
     public SearchView(Context context) {
@@ -207,23 +210,28 @@ public class SearchView extends View {
         canvas.restore();
     }
 
+    /**
+     * 开始动画
+     */
     private void startAnimation() {
-        final ValueAnimator startAnimator = ValueAnimator.ofFloat(0, 1);
-        startAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                startingFraction = (float) animation.getAnimatedValue();
-                postInvalidate();
-                if (startingFraction == 1) {
-                    // 切换状态到 正在加载状态
-                    SearchView.this.state = STATE_LOADING;
-                    startLoadingAnimation();
-                    // 重置
-                    resetParams();
+        if(startAnimator==null) {
+            startAnimator = ValueAnimator.ofFloat(0, 1);
+            startAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    startingFraction = (float) animation.getAnimatedValue();
+                    postInvalidate();
+                    if (startingFraction == 1) {
+                        // 切换状态到 正在加载状态
+                        SearchView.this.state = STATE_LOADING;
+                        startLoadingAnimation();
+                        // 重置
+                        resetParams();
+                    }
                 }
-            }
-        });
-        startAnimator.setDuration(1000);
+            });
+            startAnimator.setDuration(1000);
+        }
         startAnimator.start();
     }
 
@@ -231,36 +239,46 @@ public class SearchView extends View {
      * 正在加载状态的动画
      */
     private void startLoadingAnimation() {
-        final ValueAnimator loadAnimator = ValueAnimator.ofFloat(0, 1);
-        loadAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                loadingFraction = (float) animation.getAnimatedValue();
-                postInvalidate();
-            }
-        });
-        loadAnimator.setDuration(2000);
-        loadAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        if(loadAnimator==null) {
+            loadAnimator = ValueAnimator.ofFloat(0, 1);
+            loadAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    loadingFraction = (float) animation.getAnimatedValue();
+                    postInvalidate();
+                }
+            });
+            loadAnimator.setDuration(2000);
+            loadAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        }
         loadAnimator.start();
     }
 
+    /**
+     * 结束动画
+     */
     private void endingAnimation() {
-        final ValueAnimator endAnimator = ValueAnimator.ofFloat(0, 1);
-        endAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                endingFraction = (float) animation.getAnimatedValue();
-                postInvalidate();
-                if (endingFraction == 1) {
-                    // 切换状态到 正在加载状态
-                    SearchView.this.state = STATE_NONE;
+        if(loadAnimator!=null&&loadAnimator.isRunning()){
+            loadAnimator.cancel();
+        }
+        if(endAnimator==null) {
+            endAnimator = ValueAnimator.ofFloat(0, 1);
+            endAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    endingFraction = (float) animation.getAnimatedValue();
                     postInvalidate();
-                    // 重置
-                    resetParams();
+                    if (endingFraction == 1) {
+                        // 切换状态到 正在加载状态
+                        SearchView.this.state = STATE_NONE;
+                        postInvalidate();
+                        // 重置
+                        resetParams();
+                    }
                 }
-            }
-        });
-        endAnimator.setDuration(1000);
+            });
+            endAnimator.setDuration(1000);
+        }
         endAnimator.start();
     }
 
