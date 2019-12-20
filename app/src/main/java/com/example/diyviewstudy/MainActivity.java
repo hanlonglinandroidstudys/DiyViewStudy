@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.example.diyviewstudy.view.canvasView.CanvasTest;
 import com.example.diyviewstudy.view.clearEditView.ClearEditTest;
+import com.example.diyviewstudy.view.dymapView.DyMapViewTest;
 import com.example.diyviewstudy.view.gestureView.GestureViewTest;
 import com.example.diyviewstudy.view.gradientView.GradientTest;
 import com.example.diyviewstudy.view.headView.HeadViewTest;
@@ -72,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn14:
                 go(GestureViewTest.class);
+                break;
+            case R.id.btn15:
+                go(DyMapViewTest.class);
                 break;
         }
     }
