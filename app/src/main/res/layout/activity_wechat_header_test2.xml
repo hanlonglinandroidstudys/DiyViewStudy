@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".page.WechatHeaderTest">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.example.diyviewstudy.page.view.ObserverableScrollView
+            android:id="@+id/observerableScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--            头部-->
+                <ImageView
+                    android:id="@+id/img_head"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/test_img" />
+                <!--            头部-end-->
+
+                <!--                <com.example.diyviewstudy.page.adapter.NoScrollRecyclerView-->
+                <!--                    android:id="@+id/recyclerView"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content" />-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1500dp"
+                    android:background="@color/colorAccent"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+        </com.example.diyviewstudy.page.view.ObserverableScrollView>
+    </LinearLayout>
+    <!--    标题栏-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        app:navigationIcon="@drawable/app_icon_back"
+        app:title="朋友圈" />
+</RelativeLayout>

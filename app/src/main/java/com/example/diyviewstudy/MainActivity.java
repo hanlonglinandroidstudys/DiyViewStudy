@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.diyviewstudy.page.WechatHeaderTest;
+import com.example.diyviewstudy.page.WechatHeaderTest2;
 import com.example.diyviewstudy.view.canvasView.CanvasTest;
 import com.example.diyviewstudy.view.clearEditView.ClearEditTest;
 import com.example.diyviewstudy.view.dymapView.DyMapViewTest;
@@ -19,6 +21,7 @@ import com.example.diyviewstudy.view.telescopeView.TeleScopeViewTest;
 import com.example.diyviewstudy.view.waveView.WaveTest;
 import com.example.diyviewstudy.viewgroup.flowLayout.FlowlayoutTest;
 import com.example.diyviewstudy.viewgroup.myLinearLayout.MyLinearLayoutTest;
+import com.example.diyviewstudy.viewgroup.myLinearLayout.StatusBarTest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -76,6 +79,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn15:
                 go(DyMapViewTest.class);
+                break;
+            case R.id.btn16:
+                go(StatusBarTest.class);
+                break;
+            case R.id.btn17:
+                go(WechatHeaderTest.class);
                 break;
         }
     }
