@@ -10,11 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".page.WechatHeaderTest"
+            android:name=".view.dropdownView.DropDownTest"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".page.transition.TransitionActivity2" />
+        <activity android:name=".page.transition.TransitionActivity1" />
         <activity
-            android:name=".page.WechatHeaderTest2"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:name=".page.headscroll.WechatHeaderTest"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".page.headscroll.WechatHeaderTest2"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".viewgroup.myLinearLayout.StatusBarTest"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

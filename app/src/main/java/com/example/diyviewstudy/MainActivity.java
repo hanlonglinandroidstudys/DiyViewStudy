@@ -4,10 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.diyviewstudy.page.WechatHeaderTest;
-import com.example.diyviewstudy.page.WechatHeaderTest2;
+import com.example.diyviewstudy.page.headscroll.WechatHeaderTest;
+import com.example.diyviewstudy.page.transition.TransitionActivity1;
 import com.example.diyviewstudy.view.canvasView.CanvasTest;
 import com.example.diyviewstudy.view.clearEditView.ClearEditTest;
+import com.example.diyviewstudy.view.dropdownView.DropDownTest;
 import com.example.diyviewstudy.view.dymapView.DyMapViewTest;
 import com.example.diyviewstudy.view.gestureView.GestureViewTest;
 import com.example.diyviewstudy.view.gradientView.GradientTest;
@@ -85,6 +86,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn17:
                 go(WechatHeaderTest.class);
+                break;
+            case R.id.btn18:
+                go(TransitionActivity1.class);
+                break;
+            case R.id.btn19:
+                go(DropDownTest.class);
                 break;
         }
     }

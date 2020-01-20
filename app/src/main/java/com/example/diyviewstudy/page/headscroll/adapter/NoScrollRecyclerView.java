@@ -1,4 +1,4 @@
-package com.example.diyviewstudy.page.adapter;
+package com.example.diyviewstudy.page.headscroll.adapter;
 
 import android.content.Context;
 import android.util.AttributeSet;

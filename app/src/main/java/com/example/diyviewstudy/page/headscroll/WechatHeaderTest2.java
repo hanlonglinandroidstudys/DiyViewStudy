@@ -1,9 +1,4 @@
-package com.example.diyviewstudy.page;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+package com.example.diyviewstudy.page.headscroll;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -11,9 +6,13 @@ import android.util.Log;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.diyviewstudy.R;
-import com.example.diyviewstudy.page.adapter.TestAdapter;
-import com.example.diyviewstudy.page.view.ObserverableScrollView;
+import com.example.diyviewstudy.page.headscroll.adapter.TestAdapter;
+import com.example.diyviewstudy.page.headscroll.view.ObserverableScrollView;
 import com.example.diyviewstudy.util.StatusBarUtil;
 
 import java.util.ArrayList;
@@ -22,11 +21,11 @@ import java.util.List;
 /**
  * 仿微信朋友圈头部
  */
-public class WechatHeaderTest extends AppCompatActivity implements ObserverableScrollView.OnScrollChangedListener {
+public class WechatHeaderTest2 extends AppCompatActivity implements ObserverableScrollView.OnScrollChangedListener {
 
     private ImageView img_head;
     private ObserverableScrollView observerableScrollView;
-    private RecyclerView recyclerView;
+//    private RecyclerView recyclerView;
     private Toolbar toolbar;
 
     private int imgHeight;
@@ -34,7 +33,7 @@ public class WechatHeaderTest extends AppCompatActivity implements ObserverableS
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wechat_header_test);
+        setContentView(R.layout.activity_wechat_header_test2);
         initView();
         StatusBarUtil.getInstance().setTransparent(this);
 
@@ -44,9 +43,9 @@ public class WechatHeaderTest extends AppCompatActivity implements ObserverableS
         img_head = findViewById(R.id.img_head);
         observerableScrollView = findViewById(R.id.observerableScrollView);
         initScrollObserver();
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        setAdapter(recyclerView);
+//        recyclerView = findViewById(R.id.recyclerView);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        setAdapter(recyclerView);
         toolbar = findViewById(R.id.toolbar_title);
     }
 
@@ -62,7 +61,7 @@ public class WechatHeaderTest extends AppCompatActivity implements ObserverableS
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     toolbar.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 }
-                observerableScrollView.setOnScrollChangedListener(WechatHeaderTest.this);
+                observerableScrollView.setOnScrollChangedListener(WechatHeaderTest2.this);
             }
         });
     }
@@ -88,7 +87,7 @@ public class WechatHeaderTest extends AppCompatActivity implements ObserverableS
             } else {
                 toolbar.setAlpha(0);
             }
-        } else if (t >= imgHeight) {
+        } else if (t > imgHeight) {
             toolbar.setAlpha(1);
             return;
         } else {
