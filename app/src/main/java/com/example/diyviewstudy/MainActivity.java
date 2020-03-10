@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.diyviewstudy.event.InterceptEventTest;
 import com.example.diyviewstudy.page.headscroll.WechatHeaderTest;
 import com.example.diyviewstudy.page.transition.TransitionActivity1;
+import com.example.diyviewstudy.setFactory2.SetFactory2Test;
 import com.example.diyviewstudy.view.canvasView.CanvasTest;
 import com.example.diyviewstudy.view.clearEditView.ClearEditTest;
 import com.example.diyviewstudy.view.dropdownView.DropDownTest;
@@ -19,6 +21,7 @@ import com.example.diyviewstudy.view.screenMoveView.ScreenMoveTest;
 import com.example.diyviewstudy.view.searchView.SearchViewTest;
 import com.example.diyviewstudy.view.shadowLayer.ShadowTest;
 import com.example.diyviewstudy.view.telescopeView.TeleScopeViewTest;
+import com.example.diyviewstudy.view.textView.DxTextViewTest;
 import com.example.diyviewstudy.view.waveView.WaveTest;
 import com.example.diyviewstudy.viewgroup.flowLayout.FlowlayoutTest;
 import com.example.diyviewstudy.viewgroup.myLinearLayout.MyLinearLayoutTest;
@@ -92,6 +95,15 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn19:
                 go(DropDownTest.class);
+                break;
+            case R.id.btn20:
+                go(DxTextViewTest.class);
+                break;
+            case R.id.btn21:
+                go(InterceptEventTest.class);
+                break;
+            case R.id.btn22:
+                go(SetFactory2Test.class);
                 break;
         }
     }

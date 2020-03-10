@@ -9,9 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".setFactory2.SetFactory2Test"></activity>
+        <activity android:name=".event.InterceptEventTest" />
+        <activity android:name=".view.textView.DxTextViewTest" />
         <activity
             android:name=".view.dropdownView.DropDownTest"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".page.transition.TransitionActivity2" />
         <activity android:name=".page.transition.TransitionActivity1" />
         <activity
