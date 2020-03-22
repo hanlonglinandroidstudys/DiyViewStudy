@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.example.diyviewstudy.view.canvasView.CanvasTest;
 import com.example.diyviewstudy.view.clearEditView.ClearEditTest;
+import com.example.diyviewstudy.view.colorTrackView.ColorTrackViewTest;
 import com.example.diyviewstudy.view.gradientView.GradientTest;
 import com.example.diyviewstudy.view.headView.HeadViewTest;
 import com.example.diyviewstudy.view.magnifyingView.MagnifyingTest;
@@ -60,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn11:
                 go(SearchViewTest.class);
+                break;
+            case R.id.btn25:
+                go(ColorTrackViewTest.class);
                 break;
         }
     }
