@@ -14,6 +14,7 @@ public class WaveTest extends AppCompatActivity {
     private WaveView waveView;
     private WaveView2 waveView2;
     private WaveMoveShipView waveView3;
+    private WaveJinmuView waveView4;
     private Button btn_change;
     private EditText ed_progress;
 
@@ -24,8 +25,10 @@ public class WaveTest extends AppCompatActivity {
         waveView = findViewById(R.id.waveView);
         waveView2 = findViewById(R.id.waveView2);
         waveView3 = findViewById(R.id.waveView3);
+        waveView4 = findViewById(R.id.waveJinmuView);
         waveView.startAnim();
         waveView2.startAnim();
+        waveView4.startAnim();
 
         btn_change = findViewById(R.id.btn_change);
         ed_progress = findViewById(R.id.ed_progress);
@@ -40,6 +43,9 @@ public class WaveTest extends AppCompatActivity {
                 waveView.setProgress(progress);
                 waveView2.setProgress(progress);
                 waveView3.setProgress(progress / 100);
+                waveView4.setLeftProgress(progress/100);
+                waveView4.setRightProgress(1-progress/100);
+
             }
         });
     }

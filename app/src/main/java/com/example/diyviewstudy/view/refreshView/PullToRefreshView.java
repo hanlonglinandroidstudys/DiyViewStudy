@@ -1,133 +1,195 @@
 package com.example.diyviewstudy.view.refreshView;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Scroller;
+import android.widget.TextView;
 
 import com.example.diyviewstudy.R;
 
-import androidx.annotation.Nullable;
-
-import static android.content.ContentValues.TAG;
-
+/**
+ * author: DragonForest
+ * time: 2019/12/13
+ */
 public class PullToRefreshView extends ViewGroup {
-    private IHeaderView headerView;
-    private float lastY;
+    IHeaderView headerView;
+    View footerView;
+    View contentView;
 
-    /** 生效距离*/
-    float effectLength=300;
-    /** 最大距离*/
-    float maxLength=600;
-    /**  回弹时间*/
-    int scrollDuration=200;
-
+    TextView tv_header;
     Scroller mScroller;
+
+    private float lastY;
+    private float mContentHeight = 0;
+
+    boolean isLoading=false;
+
+    /**
+     * 有效滑动距离
+     */
+    private float effectiveScrollY=300;
+
+    /**
+     * 最大滑动距离
+     */
+    private float maxScrollY=500;
 
     public PullToRefreshView(Context context) {
         super(context);
         init();
     }
 
-    public PullToRefreshView(Context context, @Nullable AttributeSet attrs) {
+    public PullToRefreshView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(); }
+        init();
+    }
 
     private void init() {
+        footerView = LayoutInflater.from(getContext()).inflate(R.layout.view_footer, null);
+
         mScroller=new Scroller(getContext());
-//        headerView = new DefaultHeaderView(getContext());
-        headerView=new MyHeaderView(getContext());
+    }
+
+    public void setHeaderView(IHeaderView headerView){
+        this.headerView=headerView;
         addView(headerView.getView());
     }
 
     @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+
+        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, (int)maxScrollY-20);
+        footerView.setLayoutParams(params);
+        addView(footerView);
+    }
+
+    @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int totalContentHieght = 0;
         int childCount = getChildCount();
-        Log.e(TAG,"childCount:"+childCount);
         for (int i = 0; i < childCount; i++) {
             View child = getChildAt(i);
-            child.measure(widthMeasureSpec,heightMeasureSpec);
+            child.measure(widthMeasureSpec, heightMeasureSpec);
+            totalContentHieght += child.getMeasuredHeight();
         }
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+//        setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), Math.min(totalContentHieght, heightSize));
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        int top = 0;
-        int left = 0;
-        int right = 0;
-        int bottom = 0;
+        int top;
+        int left;
+        int right;
+        int bottom;
         int childCount = getChildCount();
+        mContentHeight = 0;
+        Log.e("PullToRefresh", "onLayout: childCount:" + childCount);
         for (int i = 0; i < childCount; i++) {
-            View child = getChildAt(i);
-            if (child == headerView.getView()) {
-                // 头布局 摆放在屏幕上面
-                Log.e(TAG,"找到头布局"+child.getMeasuredHeight());
-                child.layout(0, -child.getMeasuredHeight(), child.getMeasuredWidth(), 0);
-            } else {
-                // 普通布局 摆放在屏幕中
-                bottom = top + child.getMeasuredHeight();
-                right = left + child.getMeasuredWidth();
-                child.layout(left, top, right, bottom);
+            View childAt = getChildAt(i);
+            if (childAt == headerView) {
+                // 头布局
+                top = -childAt.getMeasuredHeight();
+                bottom = top + childAt.getMeasuredHeight();
+                left = 0;
+                right = left + childAt.getMeasuredWidth();
+                childAt.layout(left, top, right, bottom);
 
-                top = bottom;
+                Log.e("PullToRefresh", "头布局: (" + top + "," + left + "," + right + "," + bottom + "):");
+            } else if (childAt == footerView) {
+                // 底布局
+                top = (int) mContentHeight;
+                bottom = top + childAt.getMeasuredHeight();
+                left = 0;
+                right = left + childAt.getMeasuredWidth();
+                childAt.layout(left, top, right, bottom);
+                Log.e("PullToRefresh", "底部距: (" + top + "," + left + "," + right + "," + bottom + "):");
+            } else {
+                // 内容布局
+                top = (int) mContentHeight;
+                bottom = top + childAt.getMeasuredHeight();
+                left = 0;
+                right = left + childAt.getMeasuredWidth();
+                childAt.layout(left, top, right, bottom);
+                mContentHeight += childAt.getMeasuredHeight();
+                Log.e("PullToRefresh", "内容布局: (" + top + "," + left + "," + right + "," + bottom + "):");
             }
+
         }
+
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        float y = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                lastY = event.getY();
+                lastY = y;
                 break;
             case MotionEvent.ACTION_MOVE:
-                float dy=lastY-event.getY();
-                if(Math.abs(getScrollY())<maxLength){
-                    scrollBy(0,(int)dy);
-                    if(Math.abs(getScrollY())<effectLength){
-                        headerView.onStart(Math.abs(getScrollY()/effectLength));
+                float dy = lastY - y;
+                if(Math.abs(getScrollY())<maxScrollY){
+                    if(Math.abs(getScrollY())>effectiveScrollY){
+                        float fac=(float)(Math.abs(getScrollY())-effectiveScrollY)/(maxScrollY-effectiveScrollY);
+                        headerView.onEffect(fac);
                     }else{
-                        headerView.onEffect((Math.abs(getScrollY())-effectLength)/(maxLength-effectLength));
+                        float fac=(float)Math.abs(getScrollY())/effectiveScrollY;
+                        headerView.onStart(fac);
                     }
+                    scrollBy(0, (int) dy);
                 }
-                Log.e(TAG,"getScrollY-->"+getScrollY()+",getY--->"+getY()+",getTranslationY--->"+getTranslationY());
-                lastY=event.getY();
+
+                Log.e("PullToReferesh","getScrollY():"+getScrollY());
                 break;
             case MotionEvent.ACTION_UP:
-                if(Math.abs(getScrollY())<effectLength){
-                    mScroller.startScroll(0,getScrollY(),0,-getScrollY(),scrollDuration);
+                if(Math.abs(getScrollY())>effectiveScrollY){
+                    mScroller.startScroll(0,getScrollY(),0,-getScrollY()-(int)effectiveScrollY,200);
+                    invalidate();
+//                    scrollTo(0,-(int)effectiveScrollY);
+                    headerView.onLoading();
+                    isLoading=true;
+                }else{
+                    mScroller.startScroll(0,getScrollY(),0,-getScrollY(),200);
                     invalidate();
                     headerView.onFinish();
-                }else{
-                    mScroller.startScroll(0,getScrollY(),0,-(int)effectLength-getScrollY(),scrollDuration);
-                    invalidate();
-                    headerView.onLoading();
+                    isLoading=false;
                 }
                 break;
-
         }
+        lastY = y;
         return true;
     }
 
     @Override
     public void computeScroll() {
+        super.computeScroll();
         if(mScroller.computeScrollOffset()){
-            scrollTo(mScroller.getCurrX(),mScroller.getCurrY());
-            postInvalidate();
+            scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
+            invalidate();
         }
     }
 
+    public void startRefresh(){
+        scrollTo(0,-(int)effectiveScrollY);
+        headerView.onLoading();
+        isLoading=true;
+    }
 
-    public void setHeaderView(IHeaderView headerView) {
-        if(this.headerView!=null){
-            removeView(headerView.getView());
-        }
-        this.headerView = headerView;
-        addView(headerView.getView());
+    public void endRefresh(){
+        scrollTo(0,0);
+        headerView.onFinish();
+        isLoading=false;
+    }
+
+    public boolean isLoading() {
+        return isLoading;
     }
 }

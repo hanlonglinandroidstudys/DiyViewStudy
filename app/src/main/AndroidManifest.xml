@@ -9,8 +9,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.colorTrackView.ColorTrackViewTest"></activity>
+        <activity android:name=".setFactory2.SetFactory2Test"></activity>
+        <activity android:name=".event.InterceptEventTest" />
+        <activity android:name=".view.textView.DxTextViewTest" />
+        <activity
+            android:name=".view.dropdownView.DropDownTest"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".page.transition.TransitionActivity2" />
+        <activity android:name=".page.transition.TransitionActivity1" />
+        <activity
+            android:name=".page.headscroll.WechatHeaderTest"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".page.headscroll.WechatHeaderTest2"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".viewgroup.myLinearLayout.StatusBarTest"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".view.dymapView.DyMapViewTest" />
+        <activity android:name=".view.gestureView.GestureViewTest" />
+        <activity
+            android:name=".view.screenMoveView.ScreenMoveTest"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".view.refreshView.PullToRefreshTest" />
         <activity android:name=".view.searchView.SearchViewTest" />
+        <activity android:name=".view.colorTrackView.ColorTrackViewTest"/>
         <activity android:name=".viewgroup.flowLayout.FlowlayoutTest" />
         <activity android:name=".view.magnifyingView.MagnifyingTest" />
         <activity android:name=".view.gradientView.GradientTest" />

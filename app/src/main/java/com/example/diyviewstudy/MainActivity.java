@@ -4,18 +4,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.diyviewstudy.event.InterceptEventTest;
+import com.example.diyviewstudy.page.headscroll.WechatHeaderTest;
+import com.example.diyviewstudy.page.transition.TransitionActivity1;
+import com.example.diyviewstudy.setFactory2.SetFactory2Test;
 import com.example.diyviewstudy.view.canvasView.CanvasTest;
 import com.example.diyviewstudy.view.clearEditView.ClearEditTest;
+import com.example.diyviewstudy.view.dropdownView.DropDownTest;
+import com.example.diyviewstudy.view.dymapView.DyMapViewTest;
+import com.example.diyviewstudy.view.gestureView.GestureViewTest;
 import com.example.diyviewstudy.view.colorTrackView.ColorTrackViewTest;
 import com.example.diyviewstudy.view.gradientView.GradientTest;
 import com.example.diyviewstudy.view.headView.HeadViewTest;
 import com.example.diyviewstudy.view.magnifyingView.MagnifyingTest;
+import com.example.diyviewstudy.view.refreshView.PullToRefreshTest;
+import com.example.diyviewstudy.view.screenMoveView.ScreenMoveTest;
 import com.example.diyviewstudy.view.searchView.SearchViewTest;
 import com.example.diyviewstudy.view.shadowLayer.ShadowTest;
 import com.example.diyviewstudy.view.telescopeView.TeleScopeViewTest;
+import com.example.diyviewstudy.view.textView.DxTextViewTest;
 import com.example.diyviewstudy.view.waveView.WaveTest;
 import com.example.diyviewstudy.viewgroup.flowLayout.FlowlayoutTest;
 import com.example.diyviewstudy.viewgroup.myLinearLayout.MyLinearLayoutTest;
+import com.example.diyviewstudy.viewgroup.myLinearLayout.StatusBarTest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -61,6 +72,39 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn11:
                 go(SearchViewTest.class);
+                break;
+            case R.id.btn12:
+                go(PullToRefreshTest.class);
+                break;
+            case R.id.btn13:
+                go(ScreenMoveTest.class);
+                break;
+            case R.id.btn14:
+                go(GestureViewTest.class);
+                break;
+            case R.id.btn15:
+                go(DyMapViewTest.class);
+                break;
+            case R.id.btn16:
+                go(StatusBarTest.class);
+                break;
+            case R.id.btn17:
+                go(WechatHeaderTest.class);
+                break;
+            case R.id.btn18:
+                go(TransitionActivity1.class);
+                break;
+            case R.id.btn19:
+                go(DropDownTest.class);
+                break;
+            case R.id.btn20:
+                go(DxTextViewTest.class);
+                break;
+            case R.id.btn21:
+                go(InterceptEventTest.class);
+                break;
+            case R.id.btn22:
+                go(SetFactory2Test.class);
                 break;
             case R.id.btn25:
                 go(ColorTrackViewTest.class);

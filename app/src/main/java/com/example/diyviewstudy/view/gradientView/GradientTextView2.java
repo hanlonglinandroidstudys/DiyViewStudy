@@ -9,6 +9,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.animation.LinearInterpolator;
 
 import androidx.annotation.Nullable;
@@ -23,11 +24,16 @@ import androidx.appcompat.widget.AppCompatTextView;
 public class GradientTextView2 extends AppCompatTextView {
     Paint mPaint;
 
+    // 渐变长度
+    float dx;
     // 移动长度
-    int dx;
+    float translateX;
     // 文字长度
     private float length;
     private LinearGradient linearGradient;
+    private Matrix matrix;
+    private ValueAnimator animator;
+    boolean order = true; // 0 正序 1反序
 
     public GradientTextView2(Context context) {
         super(context);
@@ -45,31 +51,37 @@ public class GradientTextView2 extends AppCompatTextView {
          */
         mPaint = getPaint();
         length = mPaint.measureText(getText().toString());
-        linearGradient = new LinearGradient(-length, 0, 0, 0, Color.WHITE, Color.BLACK, Shader.TileMode.CLAMP);
+        dx = length / getText().toString().length() * 4;
+        Log.e("GradientTextView2", "dx:" + dx);
+        linearGradient = new LinearGradient(0, 0, dx, 0, new int[]{Color.parseColor("#696969"), Color.WHITE, Color.parseColor("#696969")}, new float[]{0, 0.5f, 1f}, Shader.TileMode.CLAMP);
+        matrix = new Matrix();
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        Matrix matrix = new Matrix();
-        matrix.setTranslate(dx, 0);
+        super.onDraw(canvas);
+        float textWidth = mPaint.measureText(getText().toString());
+        if (order) {
+            translateX += dx;
+            if (translateX > (textWidth + dx)) {
+                order = !order;
+            }
+        } else {
+            translateX -= dx;
+            if (translateX < -dx) {
+                order = !order;
+            }
+        }
+        Log.e("GradientTextView2", "transalteX:" + translateX);
+        matrix.setTranslate(translateX, 0);
         linearGradient.setLocalMatrix(matrix);
         mPaint.setShader(linearGradient);
-        super.onDraw(canvas);
-    }
 
-    public void startAnim() {
-        ValueAnimator animator = ValueAnimator.ofInt(0, (int) length * 2);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                dx = (int) animation.getAnimatedValue();
-                postInvalidate();
-            }
-        });
-        animator.setDuration(5000);
-        animator.setInterpolator(new LinearInterpolator());
-        animator.setRepeatCount(ValueAnimator.INFINITE);
-        animator.setRepeatMode(ValueAnimator.REVERSE);
-        animator.start();
+        postInvalidateDelayed(500);
     }
 }

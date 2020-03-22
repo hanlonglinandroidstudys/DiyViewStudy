@@ -44,11 +44,17 @@
                     android:text="改变电量" />
             </LinearLayout>
 
+            <com.example.diyviewstudy.view.waveView.WaveJinmuView
+                android:id="@+id/waveJinmuView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="20dp" />
+
             <com.example.diyviewstudy.view.waveView.WaveMoveShipView
                 android:id="@+id/waveView3"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp" />
 
             <com.example.diyviewstudy.view.waveView.WaveView
                 android:id="@+id/waveView"
@@ -59,6 +65,8 @@
                 android:id="@+id/waveView2"
                 android:layout_width="match_parent"
                 android:layout_height="200dp" />
+
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

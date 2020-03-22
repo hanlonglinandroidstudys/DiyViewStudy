@@ -32,11 +32,6 @@ public class DefaultHeaderView extends RelativeLayout implements IHeaderView {
     }
 
     @Override
-    public void inflate(int layoutId) {
-
-    }
-
-    @Override
     public View getView() {
         return view;
     }

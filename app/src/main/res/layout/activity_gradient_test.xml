@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@android:color/black"
     tools:context=".view.gradientView.GradientTest">
 
     <com.example.diyviewstudy.view.gradientView.LinearGradientView
@@ -22,5 +23,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
-        android:text="我是继承自TextView的文字"/>
+        android:text="我是继承自TextView的文字"
+        android:textColor="@android:color/white" />
 </LinearLayout>
