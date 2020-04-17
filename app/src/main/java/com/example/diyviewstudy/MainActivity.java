@@ -16,6 +16,7 @@ import com.example.diyviewstudy.view.gestureView.GestureViewTest;
 import com.example.diyviewstudy.view.colorTrackView.ColorTrackViewTest;
 import com.example.diyviewstudy.view.gradientView.GradientTest;
 import com.example.diyviewstudy.view.headView.HeadViewTest;
+import com.example.diyviewstudy.view.linkedmoveView.LinkedMoViewTest;
 import com.example.diyviewstudy.view.magnifyingView.MagnifyingTest;
 import com.example.diyviewstudy.view.refreshView.PullToRefreshTest;
 import com.example.diyviewstudy.view.screenMoveView.ScreenMoveTest;
@@ -105,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn22:
                 go(SetFactory2Test.class);
+                break;
+            case R.id.btn23:
+                go(LinkedMoViewTest.class);
                 break;
             case R.id.btn25:
                 go(ColorTrackViewTest.class);

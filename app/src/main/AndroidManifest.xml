@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.linkedmoveView.LinkedMoViewTest"/>
         <activity android:name=".setFactory2.SetFactory2Test"></activity>
         <activity android:name=".event.InterceptEventTest" />
         <activity android:name=".view.textView.DxTextViewTest" />

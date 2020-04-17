@@ -10,7 +10,7 @@
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorGreen" />
+        android:background="@android:color/white" />
 
     <com.example.diyviewstudy.view.linkedmoveView.LinkRecyclerView
         android:id="@+id/linkrecyclerView"
