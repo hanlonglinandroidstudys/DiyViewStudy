@@ -13,6 +13,7 @@ import com.example.diyviewstudy.view.clearEditView.ClearEditTest;
 import com.example.diyviewstudy.view.dropdownView.DropDownTest;
 import com.example.diyviewstudy.view.dymapView.DyMapViewTest;
 import com.example.diyviewstudy.view.gestureView.GestureViewTest;
+import com.example.diyviewstudy.view.colorTrackView.ColorTrackViewTest;
 import com.example.diyviewstudy.view.gradientView.GradientTest;
 import com.example.diyviewstudy.view.headView.HeadViewTest;
 import com.example.diyviewstudy.view.magnifyingView.MagnifyingTest;
@@ -104,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn22:
                 go(SetFactory2Test.class);
+                break;
+            case R.id.btn25:
+                go(ColorTrackViewTest.class);
                 break;
         }
     }

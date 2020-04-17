@@ -33,6 +33,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".view.refreshView.PullToRefreshTest" />
         <activity android:name=".view.searchView.SearchViewTest" />
+        <activity android:name=".view.colorTrackView.ColorTrackViewTest"/>
         <activity android:name=".viewgroup.flowLayout.FlowlayoutTest" />
         <activity android:name=".view.magnifyingView.MagnifyingTest" />
         <activity android:name=".view.gradientView.GradientTest" />
