@@ -68,7 +68,7 @@ public class WechatHeaderTest2 extends AppCompatActivity implements Observerable
 
     private void setAdapter(RecyclerView recyclerView) {
         List<String> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 50; i++) {
             list.add("条目" + i);
         }
         TestAdapter testAdapter = new TestAdapter(list);

@@ -8,12 +8,15 @@ import com.example.diyviewstudy.event.InterceptEventTest;
 import com.example.diyviewstudy.page.headscroll.WechatHeaderTest;
 import com.example.diyviewstudy.page.transition.TransitionActivity1;
 import com.example.diyviewstudy.setFactory2.SetFactory2Test;
+import com.example.diyviewstudy.view.DRefreshLayout.DRefreshLayout;
+import com.example.diyviewstudy.view.DRefreshLayout.DRefreshViewTest;
 import com.example.diyviewstudy.view.canvasView.CanvasTest;
 import com.example.diyviewstudy.view.clearEditView.ClearEditTest;
 import com.example.diyviewstudy.view.dropdownView.DropDownTest;
 import com.example.diyviewstudy.view.dymapView.DyMapViewTest;
 import com.example.diyviewstudy.view.gestureView.GestureViewTest;
 import com.example.diyviewstudy.view.colorTrackView.ColorTrackViewTest;
+import com.example.diyviewstudy.view.glide.GlideTest;
 import com.example.diyviewstudy.view.gradientView.GradientTest;
 import com.example.diyviewstudy.view.headView.HeadViewTest;
 import com.example.diyviewstudy.view.linkedmoveView.LinkedMoViewTest;
@@ -112,6 +115,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn25:
                 go(ColorTrackViewTest.class);
+                break;
+            case R.id.btn26:
+                go(GlideTest.class);
+                break;
+            case R.id.btn27:
+                go(DRefreshViewTest.class);
                 break;
         }
     }

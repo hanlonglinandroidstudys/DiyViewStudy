@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.linkedmoveView.LinkedMoViewTest"/>
-        <activity android:name=".setFactory2.SetFactory2Test"></activity>
+        <activity android:name=".view.DRefreshLayout.DRefreshViewTest"></activity>
+        <activity android:name=".view.linkedmoveView.LinkedMoViewTest" />
+        <activity android:name=".setFactory2.SetFactory2Test" />
         <activity android:name=".event.InterceptEventTest" />
         <activity android:name=".view.textView.DxTextViewTest" />
         <activity
@@ -34,7 +35,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".view.refreshView.PullToRefreshTest" />
         <activity android:name=".view.searchView.SearchViewTest" />
-        <activity android:name=".view.colorTrackView.ColorTrackViewTest"/>
+        <activity android:name=".view.colorTrackView.ColorTrackViewTest" />
         <activity android:name=".viewgroup.flowLayout.FlowlayoutTest" />
         <activity android:name=".view.magnifyingView.MagnifyingTest" />
         <activity android:name=".view.gradientView.GradientTest" />
